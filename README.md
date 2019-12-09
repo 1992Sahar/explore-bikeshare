@@ -49,3 +49,7 @@ The script provides the following statistics from the bike share data:
     *   Counts of each user type
     *   Counts of each gender (if applicable)
     *   Earliest, most recent, most common year of birth (if applicable)
+
+## 4. Acknowledgements
+
+This python script is written to be submitted as a project for [Udacity Programming for Data Science with Python Nanodegree](https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104). Many thanks for the mentorship and guidance.
