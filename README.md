@@ -1,15 +1,48 @@
-### Date created
-Include the date you created this project and README file.
+# Explore Bikeshare
 
-### Project Title
-Replace the Project Title
+## 1. Overview
 
-### Description
-Describe what your project is about and what it does
+This python script is written with the motive of exploring descriptive statistics for bike sharing system in three populous US cities; New York City, Chicago, and Washington. The script also provides some level of interactivity where users can control filters applied to the data.
 
-### Files used
-Include the files used
+## 2. Getting Started
 
-### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+### 2.1. Dependencies
 
+This script uses Python 3.x. No extra libraries are necessary beyond the Anaconda distribution. It uses **NumPy** and **Pandas** libraries. It also uses **time** and **datetime** from python standard library.
+
+### 2.2. Installation
+
+Clone this repository `git clone https://github.com/1992Sahar/explore-bikeshare.git`
+
+Then run from any python IDE using `python bikeshare.py`
+
+## 3. Content
+
+### 3.1. Files
+
+*   `bikeshare.py`: Python script that loads in dataset and performs necessary calculations according to user input in an interactive experience.
+*   `new_york_city.csv`,`chicago.csv`,`washington.csv`: Datasets used as a source for providing descriptive statistics. Not pushed to repo due to large size.
+
+### 3.1. Data
+
+Randomly selected data for the first six months of 2017 are provided for all three cities. All three of the data files contain the same core six (6) columns: `Start Time`, `End Time`, `Trip Duration`, `Start Station`, `End Station`, and `User Type`. The Chicago and New York City files also have the following two columns: `Gender` and `Birth Year`.
+
+### 3.2. Statistics Computed
+
+The script provides the following statistics from the bike share data:
+
+*   Popular times of travel
+    *   Most common month
+    *   Most common day of week
+    *   Most common hour of day
+*   Popular stations and trip
+    *   Most common start station
+    *   Most common end station
+    *   Most common trip from start to end
+*   Trip duration
+    *   Total travel time
+    *   Average travel time
+*   User info
+    *   Counts of each user type
+    *   Counts of each gender (if applicable)
+    *   Earliest, most recent, most common year of birth (if applicable)
