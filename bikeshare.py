@@ -58,11 +58,10 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     # Print welcome message and some useful hints
-    print('Hello! Let\'s explore some US bikeshare data!')
-
-    print('HINT: At any time, type:'
-          '\n - "end" to exit the program'
-          '\n - "help" for possible choices')
+    print('Hello! Let\'s explore some US bikeshare data!'
+      '\nHINT: At any time, type:'
+      '\n - "end" to exit the program'
+      '\n - "help" for possible choices')
 
     while True:
         # Get user input for city
