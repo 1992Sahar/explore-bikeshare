@@ -18,7 +18,7 @@ day_list = ['all', 'sunday','monday','tuesday',
 def get_user_input(prompt, choices=['yes','no'], hint=['yes', 'no']):
     """
     Prompt user input given an array of valid choices.
-    
+
     Args:
         (str) prompt - output message to be shown to user
         (list) choices - array of valid and possible choices
@@ -58,24 +58,21 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     # Print welcome message and some useful hints
-    print('Hello! Let\'s explore some US bikeshare data!')
-    
-    print('HINT: At any time, type:'
-          '\n - "end" to exit the program'
-          '\n - "help" for possible choices')
+    print('Hello! Let\'s explore some US bikeshare data!'
+      '\nHINT: At any time, type:'
+      '\n - "end" to exit the program'
+      '\n - "help" for possible choices')
 
     while True:
         # Get user input for city
         city = get_user_input(
             prompt='Which city would you like to explore its data?\n',
             choices=city_data.keys(), hint=city_data.keys())
-        
+
         # Get user input for wish to apply filters
-        want_filters = get_user_input(
-            prompt='Would you like to specify a month or/and a day?\n')
-        
-        if want_filters == 'yes':
-            
+        if get_user_input(
+            prompt='Would you like to specify a month or/and a day?\n') == 'yes':
+
             # Get user input for month
             month = get_user_input(
                 prompt='Which month would you like to explore its data?\n',
@@ -115,35 +112,35 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     # Create dataframe and load selected city data
     df = pd.read_csv(city_data[city])
-    
+
     # Drop unnecessary column
     df.drop(columns='Unnamed: 0', inplace=True)
-    
+
     # Rename columns for usability purposes
     column_names = ['start_time', 'end_time', 'trip_duration', 'start_station',
                     'end_station','user_type', 'gender', 'birth_year']
-    
+
     # Handle the different number of columns between datasets
     if len(df.columns) == 6:
         df.columns = column_names[0:6]
     else:
         df.columns = column_names
-        
+
     # Convert start_time to datetime object
     df.start_time = pd.to_datetime(df.start_time)
-    
+
     # Create new columns by extracting datetime attributes
     df['month'] = df.start_time.dt.month_name()
     df['dow'] = df.start_time.dt.weekday_name
     df['hour'] = df.start_time.dt.hour
-    
+
     # Filter according to month and day
     if month != 'all':
         df = df[df.month.str.lower() == month]
-    
+
     if day != 'all':
         df = df[df.dow.str.lower() == day]
 
@@ -224,55 +221,55 @@ def user_stats(df):
     for i, count in enumerate(user_count):
         print(' {}: {}'.format(user_count.index[i], count))
     print()
-    
+
     # Display counts of gender if applicable
     if 'gender' in df.columns:
         gender_count = df.gender.value_counts()
         print('Counts of gender:')
         for i, count in enumerate(gender_count):
             print(' {}: {}'.format(gender_count.index[i], count))
-        print()      
+        print()
 
     # Display earliest, most recent, and most common birth years if applicable
-    if 'birth_year' in df.columns:       
+    if 'birth_year' in df.columns:
         print("Earliest birth year:",
           int(df.birth_year.min()))
         print("Most recent birth year:",
           int(df.birth_year.max()))
         print("Most common birth year:",
-          int(df.birth_year.mode())) 
+          int(df.birth_year.mode()))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
-    
+
+
 def raw_data(df, bookmark=0):
     """
     Displays raw data upon request by the user
-    
+
     Args:
         (DataFrame) df - processed dataset
         (int) bookmark - stores index to iterate over rows
     Returns:
         None
     """
-    
+
     # Get user input for wish to see raw data
     if get_user_input(
         prompt='\nWould you like to see first 5 rows of raw data?\n') == 'yes':
-     
+
         while True:
             for i in range(bookmark, len(df)):
                 print(df.iloc[bookmark:bookmark+5].to_string())
                 bookmark += 5
-                
+
                 # Get user input for wish to continue
                 if get_user_input('\nWould you like to see the next 5 rows?\n') == 'yes':
                     continue
                 else:
                     break
             break
-            
+
         else:
             pass
 
