@@ -27,6 +27,9 @@ Then run from any python IDE using `python bikeshare.py`
 
 Randomly selected data for the first six months of 2017 are provided for all three cities. All three of the data files contain the same core six (6) columns: `Start Time`, `End Time`, `Trip Duration`, `Start Station`, `End Station`, and `User Type`. The Chicago and New York City files also have the following two columns: `Gender` and `Birth Year`.
 
+![First 10 rows of new_york_city.csv file](https://video.udacity-data.com/topher/2018/March/5aa771dc_nyc-data/nyc-data.png)
+First 10 rows of `new_york_city.csv` file. Image courtesy of Udacity.
+
 ### 3.2. Statistics Computed
 
 The script provides the following statistics from the bike share data:
